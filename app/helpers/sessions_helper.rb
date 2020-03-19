@@ -1,5 +1,5 @@
 module SessionsHelper
-	 def log_in(user)
+	def log_in(user)
 		session[:user_id] = user.id
 	end
 
@@ -35,6 +35,10 @@ module SessionsHelper
 	  user.forget
 	  cookies.delete(:user_id)
 	  cookies.delete(:remember_token)
+  end
+
+  def current_user?(user)
+	  user && user == current_user
   end
 
 end
